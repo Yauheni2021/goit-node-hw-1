@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Yauheni2021/goit-node-hw-1.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "start:dev": "nodemon index"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/Yauheni2021/goit-node-hw-1/issues"
   },
-  "homepage": "https://github.com/Yauheni2021/goit-node-hw-1#readme"
+  "homepage": "https://github.com/Yauheni2021/goit-node-hw-1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
