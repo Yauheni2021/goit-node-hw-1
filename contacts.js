@@ -18,13 +18,11 @@ const getContactById = async (contactId) => {
 };
 
 
-const addContact = async (name, email, phone) => {
+const addContact = async (data) => {
     const contacts = await contactsList();
     const newContact = {
-        id: nanoid(3),
-        name,
-        email,
-        phone,
+        id: nanoid(),
+        ...data
     };
     contacts.push(newContact)
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
