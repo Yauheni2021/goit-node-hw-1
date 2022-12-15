@@ -9,25 +9,21 @@ const contactsList = async () => {
     return JSON.parse(result);
 }
 
-const getContactById
+const getContactById = async (contactId) => {
+    const contacts = await contactsList();
+    const result = await contacts.find(item => item.contactId === contactId);
 
-// TODO: задокументировать каждую функцию
-function listContacts() {
-  // ...твой код
+    return result;
+};
+
+
+const addContact = async (name, email, phone) => {
+    
 }
 
-function getContactById(contactId) {
-  // ...твой код
-}
 
-function removeContact(contactId) {
-  // ...твой код
-}
-
-function addContact(name, email, phone) {
-  // ...твой код
-}
 
 module.exports = {
     contactsList,
+    getContactById,
 }
