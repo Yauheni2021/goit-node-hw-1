@@ -1,24 +1,46 @@
 const contacts = require("./contacts")
 
+const { Command } = require("commander")
+const program = new Command();
+program 
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
 
-const invokeAction = async ({action, id}) => {
+program.parse(process.argv);
+
+const argv = program.opts();
+
+
+const invokeAction = async ({action, id, name, email, phone}) => {
 switch (action) {
     case "list":
         const data = await contacts.contactsList()
         console.log(data);
         break;
     
-    case "getId":
+    case "get":
         const oneContact = await contacts.getContactById(id)
         console.log(oneContact);
         break;
+    
+    case "add":
+        const newContact = await contacts.addContact({ name, email, phone })
+        console.log(newContact);
+        break;
+        
+    case "remove":
+        const deleteContact = await contacts.removeContact(id)
+        console.log(deleteContact);
+        break;
 
     default:
+        console.warn("\x1B[31m Unknown action type!");
         break;
 }
 }
 
-const nodemon = require("nodemon");
+invokeAction(argv);
 
-
-console.log("Welcome to node.js im here");
